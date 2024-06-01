@@ -79,8 +79,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
-  }if(req.cookies.jwt){
-    token=req.cookies.jwt
+  }else if(req.cookies._xsrf){
+    token = req.cookies._xsrf;
   }
 
   if (!token) {
@@ -145,6 +145,7 @@ exports.isLoggedIn = async (req, res, next) => {
   }
   next();
 };
+
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {

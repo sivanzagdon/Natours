@@ -85,15 +85,14 @@ app.use(
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  console.log(req.cookies.user);
+  console.log(req.cookies);
 
-    if (req.cookies.user) {
-      // יש קובזיז עם שם המשתמש, בצע את הפעולות הרלוונטיות
-      console.log('user connectted');
-    } else {
-      // אין קובזיז עם שם המשתמש, בצע פעולות אחרות
-      console.log('user not connected');
-    }
+
+// if (req.cookies['username-localhost-8888']) {
+//   console.log('user connected');
+// } else if (!req.cookies['username-localhost-8888']) {
+//   console.log('user not connected');
+// }
 
   next();
 });
